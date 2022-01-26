@@ -8,24 +8,17 @@ export const environment = {
   ...meta,
   production: false,
   test: false,
-  // import: 'http://localhost:5000/import/',
-  // import: 'http://localhost:5001/import/v2/',
-  import: 'http://localhost:5001/import/v2/',
-  // cleansing: 'http://localhost:5002/check',
-  mapping: 'http://localhost:5003/mapping',
-  // mapping: 'http://localhost:5001/mapping',
-  cleansing: 'http://localhost:5004/check',
-  // cleansing: 'https://dcm-datacheck.azurewebsites.net/check',
-  // transform: 'https://dcm-transforming.azurewebsites.net/transfo/',
-  transform: 'http://localhost:5002/transfo/',
-  // admin: 'https://dcm-admin.azurewebsites.net/',
-  admin: 'http://localhost:5000/',
-  // upload: 'http://localhost:5004/upload/',
-  upload: 'http://localhost:5005/upload/',
-  auth: 'http://localhost:5010/',
+  import: 'http://13.36.203.148:5001/import/v2/',
+  mapping: 'http://13.36.203.148:5003/mapping',
+  cleansing: 'http://13.36.203.148:5004/check',
+  transform: 'http://13.36.203.148:5002/transfo/',
+  admin: 'http://13.36.203.148:5000/',
+  upload: 'http://13.36.203.148:5005/upload/',
+  auth: 'http://13.36.203.148:5010/',
+  pipeline: 'http://13.36.203.148:5006/',
+
   env: 'DEV',
 
-  pipeline: 'http://localhost:5006/'
 };
 
 /*

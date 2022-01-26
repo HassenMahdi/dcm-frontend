@@ -78,3 +78,15 @@ export class NodeSelect extends PipelineNode{
         {id:"OUTPUT",spot:go.Spot.Right},
     ]
 }
+
+export class NodeStandardMap extends PipelineNode{
+    static type = 'standard_map'
+    static category = 'MAPPING'    
+    static nzicon = "map"
+    static color = 'darkorange';
+    static label = 'Map to Standard'
+    static ports = [
+        {id:"INPUT",spot: go.Spot.Left},
+        {id:"OUTPUT",spot:go.Spot.Right},
+    ]
+}
