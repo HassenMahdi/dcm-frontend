@@ -4,18 +4,18 @@ const packageJson = require('../../package.json');
 
 export const environment = {
   ...meta,
-  production: true,
+  production:
+   true,
   test: false,
-  admin: 'https://dcm-admin.azurewebsites.net/',
-  import: 'https://dcm-import.azurewebsites.net/import/v2/',
-  // upload: 'http://localhost:5000/import/',
-  mapping: 'https://dcm-mapping.azurewebsites.net/mapping',
-  // mapping: 'http://localhost:5001/mapping',
-  cleansing: 'https://dcm-datacheck.azurewebsites.net/check',
-  // TRANSFORMATION
-  // transform: 'http://localhost:5000/transfo/'
-  transform: 'https://dcm-transforming.azurewebsites.net/transfo/',
-  upload: 'https://dcm-upload.azurewebsites.net/upload/',
-  auth: 'https://dcm-auth.azurewebsites.net/',
-  env: 'PRD'
+
+  import: 'http://13.36.203.148:5001/import/v2/',
+  mapping: 'http://13.36.203.148:5003/mapping',
+  cleansing: 'http://13.36.203.148:5004/check',
+  transform: 'http://13.36.203.148:5002/transfo/',
+  admin: 'http://13.36.203.148:5000/',
+  upload: 'http://13.36.203.148:5005/upload/',
+  auth: 'http://13.36.203.148:5010/',
+  pipeline: 'http://13.36.203.148:5006/',
+
+  env: 'PRD',
 };
