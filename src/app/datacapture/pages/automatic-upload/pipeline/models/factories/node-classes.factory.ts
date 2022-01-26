@@ -1,7 +1,7 @@
 import { NodeBlobStorageUpload, NodeCollectionUpload, NodeMongoDBUpload, NodePostgresUpload, NodeSQLUpload } from "../nodes/datasink.model";
 import { NodeBlobStorage, NodeCollectionImport, NodeManualImport, NodeMongoDBImport, NodePostgresImport, NodeSQLImport } from "../nodes/datasources.model";
 import { NodeTransformationCalculator, NodeTransformationDefaultValue, NodeTransformationDeleteRow, NodeTransformationFilter, NodeTransformationFilterAndReplace, NodeTransformationFormatDate, NodeTransformationGroupBy, NodeTransformationHash, NodeTransformationMerge, NodeTransformationReplace, NodeTransformations, NodeTransformationSplitter } from "../nodes/transformations.model";
-import { NodeConcat, NodeJoin, NodeMap, NodePycode, NodeSelect, NodeTransformationPipeline } from "../nodes/other.model";
+import { NodeConcat, NodeJoin, NodeMap, NodeMapToStandard, NodePycode, NodeSelect, NodeTransformationPipeline } from "../nodes/other.model";
 import { StorageAccountImportNodeComponent } from "@app/shared/setup/nodes/datasources/azure/storage-account/storage-account.component";
 import { SqlImportNodeComponent } from "@app/shared/setup/nodes/datasources/sql-import-node/sql-import-node.component";
 import { NodePycodeComponent } from "@app/shared/setup/nodes/other/node-pycode/node-pycode.component";
@@ -17,6 +17,7 @@ import { NodePipelineComponent } from "@app/shared/setup/nodes/other/node-pipeli
 import { ManualImportNodeComponent } from "@app/shared/setup/nodes/datasources/manual-import-node/manual-import-node.component";
 import { MongodbUploadNodeComponent } from "@app/shared/setup/nodes/datasinks/mongodb-upload-node/mongodb-upload-node.component";
 import { MongodbImportNodeComponent } from "@app/shared/setup/nodes/datasources/mongodb-import-node/mongodb-import-node.component";
+import { NodeMapToStandardComponent } from "@app/shared/setup/nodes/other/node-map-to-standard/node-map-to-standard.component";
 
 export const NODE_OTHERS = [
   NodeConcat.setComponenet(BaseNodeTransformationComponent),
@@ -24,7 +25,8 @@ export const NODE_OTHERS = [
   NodePycode.setComponenet(NodePycodeComponent),
   NodeMap.setComponenet(NodePycodeComponent),
   NodeSelect.setComponenet(NodePycodeComponent),
-  NodeTransformationPipeline.setComponenet(NodePipelineComponent)
+  NodeTransformationPipeline.setComponenet(NodePipelineComponent),
+  NodeMapToStandard.setComponenet(NodeMapToStandardComponent)
 ] 
 export const DATASOURCE_NODES = [
   NodeCollectionImport.setComponenet(CollectionImportComponent),

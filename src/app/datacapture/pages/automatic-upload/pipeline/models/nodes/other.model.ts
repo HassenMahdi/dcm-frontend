@@ -57,10 +57,10 @@ export class NodePycode extends PipelineNode{
 
 export class NodeMap extends PipelineNode{
     static type = 'map'
-    static category = 'TRANSFORMATION'    
+    static category = 'Mapping'    
     static nzicon = "rotate-left"
     static color = 'darkorange';
-    static label = 'Map'
+    static label = 'Simple Map'
     static ports = [
         {id:"INPUT",spot: go.Spot.Left},
         {id:"OUTPUT",spot:go.Spot.Right},
@@ -73,6 +73,18 @@ export class NodeSelect extends PipelineNode{
     static nzicon = "select"
     static color = 'darkorange';
     static label = 'Select'
+    static ports = [
+        {id:"INPUT",spot: go.Spot.Left},
+        {id:"OUTPUT",spot:go.Spot.Right},
+    ]
+}
+
+export class NodeMapToStandard extends PipelineNode{
+    static type = 'map_standard'
+    static category = 'Mapping'    
+    static nzicon = "rotate-left"
+    static color = 'darkorange';
+    static label = 'Map to Standard'
     static ports = [
         {id:"INPUT",spot: go.Spot.Left},
         {id:"OUTPUT",spot:go.Spot.Right},
