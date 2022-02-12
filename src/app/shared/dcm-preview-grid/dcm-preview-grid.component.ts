@@ -41,6 +41,7 @@ export class DcmPreviewGridComponent implements OnInit {
   generateDataSource(gridApi: any, folder: string, file_id: any, sheet_id: any, size: number) {
     const that = this;
     // this.gridApi = gridApi;
+    // alert();
     gridApi.api.setServerSideDatasource({
       getRows(params) {
         const page = params.request.endRow / size;
@@ -71,6 +72,7 @@ export class DcmPreviewGridComponent implements OnInit {
           const lastRow = () => res.total;
           const data = [];
           for (const row of res.data) {
+            
             const rowObject = {};
             let i = 0;
             for (const h of res.headers) {

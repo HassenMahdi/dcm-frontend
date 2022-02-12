@@ -17,6 +17,7 @@ import { EffectsModule } from '@ngrx/effects';
 import { EditPipelineMetadataComponent } from './componenets/modals/edit-pipeline-metadata/edit-pipeline-metadata.component';
 import { PipelineEffects } from './store/pipeline.effects';
 import { PipelineRunToolbarComponent } from './componenets/pipeline-run-toolbar/pipeline-run-toolbar.component';
+import { PipelineSetupModule } from '../setup/pipeline-setup.module';
 
 // TODO REMOVE NGX PIPELINE FROM PACKAGE
 @NgModule({
@@ -27,7 +28,7 @@ import { PipelineRunToolbarComponent } from './componenets/pipeline-run-toolbar/
     PiplineTemplateViewerComponent,
     AuthorPipelineComponent,
     EditPipelineMetadataComponent,
-    PipelineRunToolbarComponent
+    PipelineRunToolbarComponent,
   ],
   imports: [
     StoreModule.forFeature(FEATURE_NAME, PipelineReducer),
@@ -37,6 +38,8 @@ import { PipelineRunToolbarComponent } from './componenets/pipeline-run-toolbar/
     SharedModule,
     GojsAngularModule,
     NgxJsonViewerModule,
+
+    PipelineSetupModule
   ]
 })
 export class PipelineModule { }

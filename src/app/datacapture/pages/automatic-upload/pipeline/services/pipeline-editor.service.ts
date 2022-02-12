@@ -25,12 +25,13 @@ export class PipelineEditorService {
   editNode(node){
     return new Observable(observer => {
       const nodeClass = this.getNodeClass(node.type);
+      const CompClass = nodeClass.getComponenent(node)
       const ref: any = this.drawer.create({
-        nzContent: nodeClass.getComponenent(node),
+        nzContent: CompClass,
         nzContentParams: {
           data: node
         },
-        nzWidth: '700px',
+        nzWidth: CompClass.width,
         nzClosable: false,
       });
 
@@ -102,5 +103,4 @@ export class PipelineEditorService {
       this.msg.info('Preview is not ready')
     }
   }
-
 }

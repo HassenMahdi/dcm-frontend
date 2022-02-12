@@ -14,8 +14,9 @@ export class GridCellAutoTypeComponent implements ICellRendererAngularComp {
 
   agInit(params: any): void {
     this.params = params;
-
-    const rawValue = this.params.value
+    
+    const rawValue = this.params.data[this.params.colDef.colId];
+    console.log({params: this.params, value:rawValue})
     this.type = inferType(rawValue)
     this.value = formatByType(rawValue, this.type)
   }

@@ -11,7 +11,6 @@ export class PipelinesService {
 
   constructor(private http: HttpClient) { }
 
-
   publishDag(dag_id: PipelineMetadata){
     return this.http.post(environment.pipeline + 'dataflow/' + dag_id + "/publish", {})
   }

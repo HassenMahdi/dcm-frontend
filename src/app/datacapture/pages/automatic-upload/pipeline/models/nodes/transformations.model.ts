@@ -1,17 +1,17 @@
 import { Filter, FilterAndReplace, Merge, Replace, DeleteRow, DefaultValue, Splitter, Calculator, FormatDate, GroupBy, Hasher } from "@app/datacapture/pages/upload/components/transformation/transformations/transformers/transformer.model";
-import { NodeCalculcatorComponent } from "@app/shared/setup/nodes/transformations/node-calculcator-component/node-calculcator-component.component";
-import { NodeDefaultComponent } from "@app/shared/setup/nodes/transformations/node-default-component/node-default-component.component";
-import { NodeDeleteRowComponent } from "@app/shared/setup/nodes/transformations/node-delete-row-component/node-delete-row-component.component";
-import { NodeFilterReplaceComponent } from "@app/shared/setup/nodes/transformations/node-filer-replace-component/node-filer-replace-component.component";
-import { NodeFilterComponent } from "@app/shared/setup/nodes/transformations/node-filter-component/node-filter-component.component";
-import { NodeFormatDateComponent } from "@app/shared/setup/nodes/transformations/node-format-date-component/node-format-date-component.component";
-import { NodeGroupbyComponent } from "@app/shared/setup/nodes/transformations/node-groupby-component/node-groupby-component.component";
-import { NodeHashComponent } from "@app/shared/setup/nodes/transformations/node-hash-component/node-hash-component.component";
-import { NodeMergeComponent } from "@app/shared/setup/nodes/transformations/node-merge-component/node-merge-component.component";
-import { NodeReplaceComponent } from "@app/shared/setup/nodes/transformations/node-replace-component/node-replace-component.component";
-import { NodeSplitterComponent } from "@app/shared/setup/nodes/transformations/node-splitter-component/node-splitter-component.component";
 
 import * as go from "gojs";
+import { NodeCalculcatorComponent } from "../../../setup/nodes/transformations/node-calculcator-component/node-calculcator-component.component";
+import { NodeDefaultComponent } from "../../../setup/nodes/transformations/node-default-component/node-default-component.component";
+import { NodeDeleteRowComponent } from "../../../setup/nodes/transformations/node-delete-row-component/node-delete-row-component.component";
+import { NodeFilterReplaceComponent } from "../../../setup/nodes/transformations/node-filer-replace-component/node-filer-replace-component.component";
+import { NodeFilterComponent } from "../../../setup/nodes/transformations/node-filter-component/node-filter-component.component";
+import { NodeFormatDateComponent } from "../../../setup/nodes/transformations/node-format-date-component/node-format-date-component.component";
+import { NodeGroupbyComponent } from "../../../setup/nodes/transformations/node-groupby-component/node-groupby-component.component";
+import { NodeHashComponent } from "../../../setup/nodes/transformations/node-hash-component/node-hash-component.component";
+import { NodeMergeComponent } from "../../../setup/nodes/transformations/node-merge-component/node-merge-component.component";
+import { NodeReplaceComponent } from "../../../setup/nodes/transformations/node-replace-component/node-replace-component.component";
+import { NodeSplitterComponent } from "../../../setup/nodes/transformations/node-splitter-component/node-splitter-component.component";
 import { PipelineNode } from "../node.model";
 const $ = go.GraphObject.make;
 
