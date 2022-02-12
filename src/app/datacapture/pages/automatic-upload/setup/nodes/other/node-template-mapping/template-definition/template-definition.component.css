@@ -1,6 +1,13 @@
 .node
 {
-    padding: 0.5rem 2rem;
+    /* padding: 0.5rem 2rem;
+    padding-right: 0; */
+     padding: 1rem 2rem;
+    padding-right: 0;
+    border: 1px;
+    margin: 1px;
+    border-style: solid;
+    border-color: transparent;
 }
 
 .node .ant-btn 
@@ -8,10 +15,18 @@
     margin-bottom: 0;
 }
 
+.node.highlight
+{
+    border-color: grey !important;
+    background-color: #fafafa !important;
+    border-style: dotted !important;
+}
+
 .mapping-tree>.node
 {
-    border-bottom: 1px solid #dee2e6;
+    border-bottom-color: #dee2e6;
     padding: 1rem 2rem;
+    /* padding-right: 0; */
 }
 
 .node .node-label

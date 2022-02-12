@@ -21,6 +21,7 @@ export class NodeTemplateMappingComponent  extends PipelineNodeComponent {
   mapping = {}
 
   enableExtentions = false;
+  highlightDropZone = false
 
   showSummary = false;
 
@@ -69,15 +70,5 @@ export class NodeTemplateMappingComponent  extends PipelineNodeComponent {
     })
 
     this.onSave.emit(this.data)
-  }
-
-  onDragStart(event)
-  {
-    console.log("dragstart", event)
-  }
-
-  onDragEnd(event)
-  {
-    console.log("dragend", event)
   }
 }

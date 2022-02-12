@@ -15,10 +15,13 @@ export class TemplateDefinitionComponent{
 
   template_id
   template
-
+  model = {}
   template$ = new BehaviorSubject<any>(null)
+  expandedProps = {}
+
 
   @Input() enableExtentions = false
+  @Input() highlight = false
 
   @Input("template") set _template(t)
   {
@@ -36,8 +39,6 @@ export class TemplateDefinitionComponent{
   }
   @Output() mappingChange = new EventEmitter();
 
-  model = {}
-  expandedProps = {}
 
   constructor(public templates:MappingTemplateService) { }
 
