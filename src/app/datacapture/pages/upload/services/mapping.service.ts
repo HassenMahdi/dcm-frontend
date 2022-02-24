@@ -67,4 +67,6 @@ export class MappingService {
       mapping: targets.map(t => {if (t.value) { return {source: [t.value], target: t.name}; }}).filter((e) => {if (e) { return e; }})
     };
   }
+
+  
 }

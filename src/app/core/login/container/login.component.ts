@@ -23,6 +23,7 @@ export class LoginComponent {
 
   login(event: any): void {
     this.loading$.next(true);
+    // this.auth.saveCredentialsPassword("email", "pass");
     this.auth.login(event.email, event.password).subscribe((res: any) => {
       if(event.remember){
         this.auth.saveCredentialsPassword(event.email, event.password)

@@ -1,4 +1,5 @@
 
+<!-- {{array_elements | json}} -->
 <ng-container *ngIf="template$ | async; let t">
 
     <div class="mapping-tree">
@@ -69,37 +70,55 @@
             <i class="node-icon" nz-icon nzType="appstore" nzTheme="twotone"></i>
             <span class="node-label" nz-popover [nzPopoverContent]="def.description">{{property}}</span> 
             
+            <ng-container *ngTemplateOutlet="nodeStatus; context: {path:path};"></ng-container>
+
             <span class="fill"></span>
 
             <span class="button-spacing">
-                <button *ngFor="let item of def.items | keyvalue"nz-button nzSize="small" class="mb-1">
+                <button (click)="AddArrayElement(path, item)" 
+                *ngFor="let item of def.items | keyvalue"
+                nz-button nzSize="small" nzType="dashed" 
+                class="mb-1" >
                     <i nz-icon nzType="plus-circle"></i>
                     <span style="min-width: 100px;">{{item.value.split("/").pop()}}</span>
                 </button>
             </span>
 
+
         </div>
     
-    <ng-container *ngTemplateOutlet="nodeStatus; context: {path:path};"></ng-container>
     
     <ng-container *ngIf="expandedProps[path]">
         <div class="ml-4 mt-2">
             <!-- Array Elemenyts here -->
-            <ng-container *ngFor="let item of def.items | keyvalue">
+            <ng-container *ngFor="let element of array_elements[path] | keyvalue; let i=index">
+                <ng-container *ngFor="let item of def.items | keyvalue">
+
+                    <div [ngSwitch]="item.key">
+                        <ng-container *ngSwitchCase="'$ref'">
+                            <ng-container *ngTemplateOutlet="reference; context: {property:'[' + i + ']', def: {'$ref':item.value}, path: path + '.' + '[' + i + ']'};"></ng-container>
+                        </ng-container>
+                        <div *ngSwitchDefault>
+                            <ng-container *ngTemplateOutlet="primitive; context: {property:'[' + i + ']', def: {'type':item.value}, path: path + '.' + '[' + i + ']'};"></ng-container>
+                        </div>
+                    </div>
+                </ng-container>
+            </ng-container>
+            <!-- <ng-container *ngFor="let item of def.items | keyvalue">
                 <div *ngFor="let i of [0]">
 
                     <div [ngSwitch]="item.key">
                         <ng-container *ngSwitchCase="'$ref'">
                             <ng-container *ngTemplateOutlet="reference; context: {property:'[' + i + ']', def: {'$ref':item.value}, path: path + '.' + '[' + i + ']'};"></ng-container>
                         </ng-container>
-                            <div *ngSwitchDefault>
+                        <div *ngSwitchDefault>
                                 <ng-container *ngTemplateOutlet="primitive; context: {property:'[' + i + ']', def: item.value, path: path + '.' + '[' + i + ']'};"></ng-container>
-                            </div>
                         </div>
-                        
                     </div>
+                        
+                </div>
                     
-                </ng-container>
+            </ng-container> -->
                 
             </div>
         </ng-container>

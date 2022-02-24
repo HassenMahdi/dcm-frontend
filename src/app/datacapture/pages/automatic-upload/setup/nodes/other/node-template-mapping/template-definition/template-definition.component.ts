@@ -16,9 +16,9 @@ export class TemplateDefinitionComponent{
   template_id
   template
   model = {}
+  array_elements = {}
   template$ = new BehaviorSubject<any>(null)
   expandedProps = {}
-
 
   @Input() enableExtentions = false
   @Input() highlight = false
@@ -36,6 +36,27 @@ export class TemplateDefinitionComponent{
   @Input("mapping") set _mapping(m)
   {
     this.model = m;
+
+    // Update Array Elements
+    Object.keys(this.model).forEach(key=>
+    {
+      const path = key.split(".")
+
+      let base = null
+      for (let p of path)
+      {
+        if(p[0]=="[" && p[p.length-1]=="]")
+        {
+          this.array_elements[base] = this.array_elements[base] || [] ; 
+
+          const index = parseInt(p.substring(1,p.length-1));
+          // TODO ADD TYPE HERE
+          this.array_elements[base][index] = {}
+        }
+
+        base = (base)? [base, p].join(".") : p
+      }
+    })
   }
   @Output() mappingChange = new EventEmitter();
 
@@ -61,9 +82,20 @@ export class TemplateDefinitionComponent{
     return (target)? target.allOf:[];
   }
 
-  doesPathHaveMapping(path)
+  doesPathHaveMapping(path:string)
   {
-    return Object.keys(this.model).filter(key=>key.startsWith(path)).length;
+    const paths = path.split(".")
+    return Object.keys(this.model).filter((key)=>
+    {
+      const keys = key.split(".")
+      for (let index = 0; index < paths.length; index++) {
+        if(paths[index] != keys[index])
+          return false;
+      }
+
+      return true;
+    }
+    ).length;
   }
 
   onMappingChanged(event ,path)
@@ -91,4 +123,14 @@ export class TemplateDefinitionComponent{
   {
     this.setMapItem(path, event.data)
   }
+
+  AddArrayElement(path, item)
+  {
+    console.log({path, item})
+    this.array_elements[path] = this.array_elements[path] || [];
+    this.array_elements[path].push(item.value);
+
+    this.expandedProps[path] = true;
+  }
+
 }

@@ -18,7 +18,7 @@
         <nz-divider nzType="vertical"></nz-divider>
 
         <div class="button-spacing">
-          <button nz-button><i nz-icon nzType="robot"></i> Auto Mapping</button>
+          <button nz-button (click)="AutoMap()"><i nz-icon nzType="robot"></i> Auto Mapping</button>
           <button nz-button><i nz-icon nzType="save"></i> Save</button>
           <button nz-button><i nz-icon nzType="history"></i> Previous Mappings</button>
 
@@ -48,28 +48,20 @@
 
         <div class="flex between w-100 h-100 stretch">
 
-          <div class="w-25 flex column stretch mr-2">
-            <div class="flex-scroll border">
-              <div 
-              style="cursor: move;" 
-              class="border-bottom p-3 flex between"  
-              *ngFor="let h of sourceHeaders$ | async" 
-              [dndDraggable]="h"
-              (dndStart)="highlightDropZone=true"
-              (dndEnd)="highlightDropZone=false"
-              >
-                <span>{{h}}</span>
-                <i nz-icon nzType="drag" nzTheme="outline"></i>
-              </div>
+          <div class="flex column h-100 w-25 mr-2">
+            <div class="flex-scroll w-100">
+              <app-draggable-shelf [items]="sourceHeaders$ | async"  (dragStart)="highlightDropZone=true" (dragEnd)="highlightDropZone=false"></app-draggable-shelf>
             </div>
           </div>
-
-          <div class="flex-scroll border w-75 h-100 mr-2 mr-2" >
-            <app-template-definition 
-            [highlight]="highlightDropZone" 
-            [enableExtentions]="enableExtentions" 
-            [(mapping)]="mapping" 
-            [template]="template_id"></app-template-definition>
+          
+          <div class="flex column border w-75 h-100 mr-2 mr-2" >
+            <div class="flex-scroll w-100">
+              <app-template-definition 
+              [highlight]="highlightDropZone" 
+              [enableExtentions]="enableExtentions" 
+              [(mapping)]="mapping" 
+              [template]="template_id"></app-template-definition>
+            </div>
           </div>
 
         </div>

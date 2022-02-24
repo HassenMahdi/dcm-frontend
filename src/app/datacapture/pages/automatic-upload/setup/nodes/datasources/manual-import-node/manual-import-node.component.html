@@ -28,15 +28,24 @@
         </div>      
     </nz-spin>
 
+       
+   
+
 </ng-container>
 
 
-<div class="button-spacing">
+<div class="button-spacing mt-2">
   <button nz-button (click)="openConfig()"><i nz-icon nzType="setting"></i>Select Range</button>
   <!-- <button nz-button (click)="resetRange()"><i nz-icon nzType="redo"></i>Reset Range</button> -->
   </div>
 
 <nz-alert class="mt-2" nzShowIcon *ngIf='data.sheet_id' nzMessage="Dataset is ready"></nz-alert>
+
+
+<div *ngIf='imported' class="flex column stretch mt-2" style="height: 300px;">
+  <app-data-grid [floatingFilter]='false' class="flex-1" [paginationPageSize]='size$ | async' [columnDefs]="headers$ | async"
+  (gridReady)="gridReady$.next($event)"></app-data-grid>
+</div>
 
 
 <div class="button-spacing mt-2" >

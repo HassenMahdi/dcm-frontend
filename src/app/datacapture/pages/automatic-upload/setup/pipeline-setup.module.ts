@@ -34,6 +34,7 @@ import { FormsModule } from '@angular/forms';
 
 import { DndModule } from 'ngx-drag-drop';
 import { EnbaleExtentionPipe } from './nodes/other/node-template-mapping/enbale-extention.pipe';
+import { DraggableShelfComponent } from './nodes/other/node-template-mapping/draggable-shelf/draggable-shelf.component';
 
 
 const setupComponenets = [
@@ -80,6 +81,7 @@ const pipes = [
   declarations: [
     ...setupComponenets,
     ...pipes,
+    DraggableShelfComponent,
   ],
   exports: [
     ...setupComponenets,

@@ -1,4 +1,6 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { environment } from '@env/environment';
 import { of } from 'rxjs';
 
 @Injectable({
@@ -6,10 +8,16 @@ import { of } from 'rxjs';
 })
 export class MappingService {
 
-  constructor() { }
+  constructor(private http: HttpClient) {
+  }
 
-  GetMappingTemplates()
+  GetAutoMapping(headers, resource)
   {
-    return of()
+    const body = {
+      "headers": headers,
+      "resource": resource
+    }
+
+    return this.http.post( environment.mapping + `map_attrs`, body);
   }
 }

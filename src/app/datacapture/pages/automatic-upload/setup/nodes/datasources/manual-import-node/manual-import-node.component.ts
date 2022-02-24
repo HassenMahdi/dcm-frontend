@@ -1,3 +1,4 @@
+import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 import { Component, OnInit } from '@angular/core';
 import { NotificationService } from '@app/core';
 import { PipelineNodeComponent } from '@app/datacapture/pages/automatic-upload/pipeline/componenets/pipeline-editor/pipeline-node/pipeline-node.component';
@@ -5,6 +6,8 @@ import { DatasetComponent } from '@app/datacapture/pages/upload/components/impor
 import { FileImportService } from '@app/datacapture/pages/upload/services/file-import.service';
 import { environment } from '@env/environment';
 import { NzModalService } from 'ng-zorro-antd';
+import { BehaviorSubject, combineLatest, Subject } from 'rxjs';
+import { debounceTime, distinctUntilChanged } from 'rxjs/operators';
 
 @Component({
   selector: 'app-manual-import-node',
@@ -20,12 +23,26 @@ export class ManualImportNodeComponent extends PipelineNodeComponent implements 
   
   constructor(private ntf: NotificationService, private service: FileImportService, private modal: NzModalService) { 
     super()
+
+    this.paginator$ = combineLatest([this.size$, this.data$, this.gridReady$]).pipe(
+      debounceTime(1000),
+      distinctUntilChanged(),
+    )
+    .subscribe(([size, data, grid]) => {
+      this.loading$.next(false)
+      this.headers$.next([])
+      if(data && data.sheet_id)
+      {
+        this.generateDataSource(grid, data, size);
+      }
+    });
   }
 
   ngOnInit(){
     if (this.data.file_id){
       this.imported = true
     }
+    this.data$.next(this.data)
   }
 
   
@@ -74,6 +91,9 @@ export class ManualImportNodeComponent extends PipelineNodeComponent implements 
       this.data.label = e.sheetName
       this.data.sheet_id = generated_sheet.sheet_id
       this.ntf.success('Dataset ready')
+
+      this.data$.next(this.data)
+
     }, err=> this.imported = false)
   }
 
@@ -107,6 +127,46 @@ export class ManualImportNodeComponent extends PipelineNodeComponent implements 
     if (sheetId) {
       this.onSheetSelected({ sheetId, sheetName })
     }
+  }
+
+  paginator$: any;
+  headers$: BehaviorSubject<any[]> = new BehaviorSubject([]);
+  loading$: BehaviorSubject<boolean> = new BehaviorSubject(true);
+  
+  data$ = new BehaviorSubject<any>(null);
+  size$ = new BehaviorSubject<number>(200);
+  gridReady$ = new Subject<string>();
+
+  generateDataSource(gridApi: any, data, size: number) {
+    const that = this;
+    // this.gridApi = gridApi;
+    gridApi.api.setServerSideDatasource({
+      getRows(params) {
+        const page = params.request.endRow / size;
+        that.loading$.next(true);
+        that.service.getFileData(page, data.sheet_id, size).subscribe((res: any) => {
+          that.loading$.next(false);
+          if (page <= 1) {
+            const headers = res.headers.map((h) => ({field: h, headerName:h, cellRenderer: 'autoTypeRenderer'}));
+            that.headers$.next(headers);
+          }
+          const lastRow = () => res.total;
+          const rows = [];
+          for (const row of res.data) {
+            const rowObject = {};
+            let i = 0;
+            for (const h of res.headers) {
+              rowObject[h] = row[i];
+              i++;
+            }
+            rows.push(rowObject);
+          }
+          params.successCallback(rows, lastRow());
+        }, (error) => {
+            params.failCallback();
+        });
+      }
+    });
   }
 }
 
