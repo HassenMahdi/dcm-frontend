@@ -9,7 +9,7 @@ export const environment = {
   test: false,
 
   import: 'http://13.36.203.148:5001/import/v2/',
-  mapping: 'http://13.36.203.148:5003/mapping',
+  mapping: 'http://13.36.203.148:5003/mapping/',
   cleansing: 'http://13.36.203.148:5004/check',
   transform: 'http://13.36.203.148:5002/transfo/',
   admin: 'http://13.36.203.148:5000/',
