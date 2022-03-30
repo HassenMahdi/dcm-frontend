@@ -8,24 +8,15 @@ export const environment = {
   ...meta,
   production: false,
   test: false,
-  import: 'http://13.36.203.148:5001/import/v2/',
-  mapping: 'http://13.36.203.148:5003/mapping',
-  cleansing: 'http://13.36.203.148:5004/check',
-  transform: 'http://13.36.203.148:5002/transfo/',
-  admin: 'http://13.36.203.148:5000/',
-  upload: 'http://13.36.203.148:5005/upload/',
-  auth: 'http://13.36.203.148:5010/',
-  pipeline: 'http://13.36.203.148:5006/',
+  import: 'http://localhost:5001/import/v2/',
+  mapping: 'http://localhost:5003/mapping/',
+  cleansing: 'http://localhost:5004/check',
+  transform: 'http://localhost:5002/transfo/',
+  admin: 'http://localhost:5000/',
+  upload: 'http://localhost:5005/upload/',
+  auth: 'http://localhost:5010/',
+  pipeline: 'http://localhost:5006/',
 
   env: 'DEV',
 
 };
-
-/*
- * For easier debugging in development mode, you can import the following file
- * to ignore zone related error stack frames such as `zone.run`, `zoneDelegate.invokeTask`.
- *
- * This import should be commented out in production mode because it will have a negative impact
- * on performance if an error is thrown.
- */
-// import 'zone.js/dist/zone-error';  // Included with Angular CLI.
