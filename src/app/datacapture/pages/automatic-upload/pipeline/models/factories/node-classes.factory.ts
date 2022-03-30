@@ -1,7 +1,7 @@
 import { NodeBlobStorageUpload, NodeCollectionUpload, NodeMongoDBUpload, NodePostgresUpload, NodeSQLUpload } from "../nodes/datasink.model";
 import { NodeBlobStorage, NodeCollectionImport, NodeManualImport, NodeMongoDBImport, NodePostgresImport, NodeSQLImport } from "../nodes/datasources.model";
 import { NodeTransformationCalculator, NodeTransformationDefaultValue, NodeTransformationDeleteRow, NodeTransformationFilter, NodeTransformationFilterAndReplace, NodeTransformationFormatDate, NodeTransformationGroupBy, NodeTransformationHash, NodeTransformationMerge, NodeTransformationReplace, NodeTransformations, NodeTransformationSplitter } from "../nodes/transformations.model";
-import { NodeConcat, NodeJoin, NodeMap, NodeMapToStandard, NodePycode, NodeSelect, NodeTransformationPipeline } from "../nodes/other.model";
+import { NodeConcat, NodeJoin, NodeMap, NodeMapToStandard, NodePycode, NodeSelect, NodeStandardMap, NodeTransformationPipeline } from "../nodes/other.model";
 import { CollectionUploadComponent } from "../../../setup/nodes/datasinks/collection-upload/collection-upload.component";
 import { MongodbUploadNodeComponent } from "../../../setup/nodes/datasinks/mongodb-upload-node/mongodb-upload-node.component";
 import { PostgresUploadNodeComponent } from "../../../setup/nodes/datasinks/postgres-upload-node/postgres-upload-node.component";
@@ -27,6 +27,7 @@ export const NODE_OTHERS = [
   NodeSelect.setComponenet(NodePycodeComponent),
   NodeTransformationPipeline.setComponenet(NodePipelineComponent),
   NodeMapToStandard.setComponenet(NodeTemplateMappingComponent),
+  NodeStandardMap.setComponenet(NodePipelineComponent)
 ] 
 export const DATASOURCE_NODES = [
   NodeCollectionImport.setComponenet(CollectionImportComponent),
