@@ -6,7 +6,7 @@ const $ = go.GraphObject.make;
 
 export class NodeConcat extends PipelineNode{
     static type = 'concat'
-    static category = 'MERGE'    
+    static category = 'MERGE'
     static nzicon = "insert-row-below"
     static color = 'orange';
     static label = 'Concat'
@@ -19,7 +19,7 @@ export class NodeConcat extends PipelineNode{
 
 export class NodeTransformationPipeline extends PipelineNode{
     static type = 'PIPELINE_TRANSFORMATION'
-    static category = 'TRANSFORMATION'    
+    static category = 'TRANSFORMATION'
     static nzicon = "api"
     static color = 'darkorange';
     static label = 'Pipeline'
@@ -45,7 +45,7 @@ export class NodeJoin extends PipelineNode{
 export class NodePycode extends PipelineNode{
     static type = 'pycode';
     static category = 'SCRIPTS';
-    
+
     static icon = 'assets/images/svg/pycode.svg';
     static color = 'red';
     static label = 'Pycode'
@@ -57,7 +57,7 @@ export class NodePycode extends PipelineNode{
 
 export class NodeMap extends PipelineNode{
     static type = 'map'
-    static category = 'TRANSFORMATION'    
+    static category = 'TRANSFORMATION'
     static nzicon = "rotate-left"
     static color = 'darkorange';
     static label = 'Map'
@@ -69,7 +69,7 @@ export class NodeMap extends PipelineNode{
 
 export class NodeSelect extends PipelineNode{
     static type = 'select'
-    static category = 'TRANSFORMATION'    
+    static category = 'TRANSFORMATION'
     static nzicon = "select"
     static color = 'darkorange';
     static label = 'Select'
@@ -81,7 +81,7 @@ export class NodeSelect extends PipelineNode{
 
 export class NodeStandardMap extends PipelineNode{
     static type = 'standard_map'
-    static category = 'MAPPING'    
+    static category = 'MAPPING'
     static nzicon = "map"
     static color = 'darkorange';
     static label = 'Map to Standard'
@@ -89,4 +89,16 @@ export class NodeStandardMap extends PipelineNode{
         {id:"INPUT",spot: go.Spot.Left},
         {id:"OUTPUT",spot:go.Spot.Right},
     ]
+}
+
+export class NodeRequest extends PipelineNode{
+  static type = 'request'
+  static category = 'API CALL'
+  static nzicon = "api"
+  static color = 'purple';
+  static label = 'Request'
+  static ports = [
+      {id:"INPUT",spot: go.Spot.Left},
+      {id:"OUTPUT",spot:go.Spot.Right},
+  ]
 }

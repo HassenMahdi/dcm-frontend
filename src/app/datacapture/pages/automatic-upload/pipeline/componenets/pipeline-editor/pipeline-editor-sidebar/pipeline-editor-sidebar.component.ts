@@ -20,13 +20,14 @@ export class PipelineEditorSidebarComponent implements OnInit {
     'MERGE': 'Merge Tools',
     'SCRIPTS': 'Scripts',
     'DATASINK': 'Datasink',
+    'API CALL': 'API Call',
   };
 
   constructor() { }
 
   ngOnInit(): void {
     this.nodesMap = {};
-    for (const node of ALL_NODES){
+    for (const node of ALL_NODES) {
       const arr = DefaultArray(this.nodesMap, this.labels[node.category] || node.category);
       arr.push(node);
     }

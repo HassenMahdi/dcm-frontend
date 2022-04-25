@@ -1,0 +1,20 @@
+import { Component } from '@angular/core';
+import { PipelineNodeComponent } from '@app/datacapture/pages/automatic-upload/pipeline/componenets/pipeline-editor/pipeline-node/pipeline-node.component';
+
+@Component({
+  selector: 'app-node-request',
+  templateUrl: './node-request.component.html',
+  styleUrls: ['./node-request.component.css']
+})
+export class NodeRequestComponent extends PipelineNodeComponent  {
+
+  editorOptions = {language: 'python'};
+
+  constructor() {
+    super()
+  }
+
+  ngOnInit(): void {
+  }
+
+}
