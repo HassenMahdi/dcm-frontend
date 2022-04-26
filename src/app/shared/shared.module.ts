@@ -55,6 +55,7 @@ import { ManualImportNodeComponent } from './setup/nodes/datasources/manual-impo
 import { MongodbUploadNodeComponent } from './setup/nodes/datasinks/mongodb-upload-node/mongodb-upload-node.component';
 import { MongodbImportNodeComponent } from './setup/nodes/datasources/mongodb-import-node/mongodb-import-node.component';
 import { NodeRequestComponent } from './setup/nodes/other/node-request/node-request.component';
+import { NodeCheckDuplicateComponent } from './setup/nodes/other/node-check-duplicate/node-check-duplicate.component';
 // import { ZorroSharperModule } from "zorro-sharper";
 
 // In this constant, Add all the shared modules and components that you will be using in all the rest of the application
@@ -127,6 +128,7 @@ const Components = [
     MongodbUploadNodeComponent,
     MongodbImportNodeComponent,
     NodeRequestComponent,
+    NodeCheckDuplicateComponent,
   ],
   exports: [
     ...SharedModules,

@@ -102,3 +102,14 @@ export class NodeRequest extends PipelineNode{
       {id:"OUTPUT",spot:go.Spot.Right},
   ]
 }
+export class NodeCheckDuplicate extends PipelineNode{
+  static type = 'duplicate'
+  static category = 'Check'
+  static nzicon = "check-circle"
+  static color = 'brown';
+  static label = 'Duplicate'
+  static ports = [
+      {id:"INPUT",spot: go.Spot.Left},
+      {id:"OUTPUT",spot:go.Spot.Right},
+  ]
+}
