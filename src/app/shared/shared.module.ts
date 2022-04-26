@@ -56,6 +56,7 @@ import { MongodbUploadNodeComponent } from './setup/nodes/datasinks/mongodb-uplo
 import { MongodbImportNodeComponent } from './setup/nodes/datasources/mongodb-import-node/mongodb-import-node.component';
 import { NodeRequestComponent } from './setup/nodes/other/node-request/node-request.component';
 import { NodeCheckDuplicateComponent } from './setup/nodes/other/node-check-duplicate/node-check-duplicate.component';
+import { DcmCleansingGridComponent } from './dcm-cleansing-grid/dcm-cleansing-grid.component';
 // import { ZorroSharperModule } from "zorro-sharper";
 
 // In this constant, Add all the shared modules and components that you will be using in all the rest of the application
@@ -129,6 +130,7 @@ const Components = [
     MongodbImportNodeComponent,
     NodeRequestComponent,
     NodeCheckDuplicateComponent,
+    DcmCleansingGridComponent,
   ],
   exports: [
     ...SharedModules,
