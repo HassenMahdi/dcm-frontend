@@ -8,7 +8,7 @@ import { PipelineNodeComponent } from '@app/datacapture/pages/automatic-upload/p
 })
 export class NodeRequestComponent extends PipelineNodeComponent  {
 
-  editorOptions = {language: 'python'};
+  editorOptions = {language: 'javascript'};
 
   constructor() {
     super()
