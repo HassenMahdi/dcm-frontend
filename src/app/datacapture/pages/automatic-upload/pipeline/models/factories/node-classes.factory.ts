@@ -27,7 +27,7 @@ export const NODE_OTHERS = [
   NodeSelect.setComponenet(NodePycodeComponent),
   NodeTransformationPipeline.setComponenet(NodePipelineComponent),
   NodeMapToStandard.setComponenet(NodeTemplateMappingComponent),
-  NodeStandardMap.setComponenet(NodePipelineComponent)
+  // NodeStandardMap.setComponenet(NodePipelineComponent)
 ] 
 export const DATASOURCE_NODES = [
   NodeCollectionImport.setComponenet(CollectionImportComponent),
