@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { NzDrawerService, NzMessageService } from 'ng-zorro-antd';
-import { Observable} from 'rxjs';
+import { Observable } from 'rxjs';
 import { EditPipelineMetadataComponent } from '../componenets/modals/edit-pipeline-metadata/edit-pipeline-metadata.component';
 import { PiplineTemplateViewerComponent } from '../componenets/pipeline-editor/pipline-template-viewer/pipline-template-viewer.component';
 import { PipelineMetadata } from '../models/metadata.model';
@@ -92,30 +92,16 @@ export class PipelineEditorService {
     // TODO WEIRD OUTPUT SHOULD INVESTIGATE
     if (output.file_id && output.sheet_id) {
 
-      if (data.type == "IMPORT_MANUAL") {
-        this.drawer.create({
-          nzTitle: data.label + ' Preview',
-          nzContent: DcmCleansingGridComponent,
-          nzContentParams: {
-            file_id: output.file_id,
-            sheet_id: output.sheet_id,
-            folder: output.folder,
-          },
-          nzWidth: '90vw',
-        })
-
-      } else {
-        this.drawer.create({
-          nzTitle: data.label + ' Preview',
-          nzContent: DcmPreviewGridComponent,
-          nzContentParams: {
-            file_id: output.file_id,
-            sheet_id: output.sheet_id,
-            folder: output.folder,
-          },
-          nzWidth: '90vw',
-        })
-      }
+      this.drawer.create({
+        nzTitle: data.label + ' Preview',
+        nzContent: DcmPreviewGridComponent,
+        nzContentParams: {
+          file_id: output.file_id,
+          sheet_id: output.sheet_id,
+          folder: output.folder,
+        },
+        nzWidth: '90vw',
+      })
 
     } else if (output.status == 'success') {
       this.msg.info('No Preview for this Node')
