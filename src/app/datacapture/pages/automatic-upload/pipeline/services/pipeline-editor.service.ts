@@ -84,24 +84,39 @@ export class PipelineEditorService {
   previewNode(data: any, run: any) {
     const task = run.tasks.find(t => t.task_id == data.key)
     console.log('data', data);
-
     const output = task.output || {}
-
-
-
     // TODO WEIRD OUTPUT SHOULD INVESTIGATE
     if (output.file_id && output.sheet_id) {
 
-      this.drawer.create({
-        nzTitle: data.label + ' Preview',
-        nzContent: DcmPreviewGridComponent,
-        nzContentParams: {
-          file_id: output.file_id,
-          sheet_id: output.sheet_id,
-          folder: output.folder,
-        },
-        nzWidth: '90vw',
-      })
+      if (data.type == "IMPORT_MANUAL") {
+
+        this.drawer.create({
+          nzTitle: data.label + ' Preview',
+          nzContent: DcmCleansingGridComponent,
+          nzContentParams: {
+            file_id: output.file_id,
+            sheet_id: output.sheet_id,
+            folder: output.folder,
+          },
+          nzWidth: '90vw',
+        })
+
+      } else {
+
+        this.drawer.create({
+          nzTitle: data.label + ' Preview',
+          nzContent: DcmPreviewGridComponent,
+          nzContentParams: {
+            file_id: output.file_id,
+            sheet_id: output.sheet_id,
+            folder: output.folder,
+          },
+          nzWidth: '90vw',
+        })
+
+      }
+
+
 
     } else if (output.status == 'success') {
       this.msg.info('No Preview for this Node')
