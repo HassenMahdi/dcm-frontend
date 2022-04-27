@@ -18,6 +18,7 @@ import { NodePipelineComponent } from "../../../setup/nodes/other/node-pipeline/
 import { NodePycodeComponent } from "../../../setup/nodes/other/node-pycode/node-pycode.component";
 import { NodeTemplateMappingComponent } from "../../../setup/nodes/other/node-template-mapping/node-template-mapping.component";
 import { BaseNodeTransformationComponent } from "../../../setup/nodes/transformations/base-node-transformation/base-node-transformation.component";
+import { NodeCodeCheck, NodeColumnComparison, NodeComparionCheck, NodeDuplicateCheck, NodeTypeCheck } from "../nodes/checks.model";
 
 export const NODE_OTHERS = [
   NodeConcat.setComponenet(BaseNodeTransformationComponent),
@@ -61,7 +62,15 @@ export const NODE_TRANSFORMERS = [
           })
 
 
-export const ALL_NODES = [...DATASOURCE_NODES,...DATASINK_NODES, ...NODE_TRANSFORMERS, ...NODE_OTHERS]
+export const CHECK_NODES = [
+  NodeDuplicateCheck,
+  NodeComparionCheck,
+  NodeColumnComparison,
+  NodeCodeCheck,
+  NodeTypeCheck,
+]
+
+export const ALL_NODES = [...DATASOURCE_NODES,...DATASINK_NODES, ...NODE_TRANSFORMERS, ...NODE_OTHERS, ...CHECK_NODES]
 
 export function getNodeClassBy(type){
   return ALL_NODES.find(e=>e.type===type)

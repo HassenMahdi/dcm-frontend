@@ -4,8 +4,8 @@ import { BehaviorSubject, Observable, Subject } from 'rxjs';
 import { EditPipelineMetadataComponent } from '../componenets/modals/edit-pipeline-metadata/edit-pipeline-metadata.component';
 import { PiplineTemplateViewerComponent } from '../componenets/pipeline-editor/pipline-template-viewer/pipline-template-viewer.component';
 import { PipelineMetadata } from '../models/metadata.model';
-import { ALL_NODES } from '../models/factories/templates.factory';
 import { DcmPreviewGridComponent } from '@app/shared/dcm-preview-grid/dcm-preview-grid.component';
+import { ALL_NODES } from '../models/factories/node-classes.factory';
 
 @Injectable({
   providedIn: 'root'
