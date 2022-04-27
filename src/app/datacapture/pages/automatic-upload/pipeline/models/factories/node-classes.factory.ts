@@ -2,7 +2,7 @@ import { NodeCheckDuplicateComponent } from './../../../../../../shared/setup/no
 import { NodeRequestComponent } from './../../../../../../shared/setup/nodes/other/node-request/node-request.component';
 import { NodeBlobStorageUpload, NodeCollectionUpload, NodeMongoDBUpload, NodePostgresUpload, NodeSQLUpload } from "../nodes/datasink.model";
 import { NodeBlobStorage, NodeCollectionImport, NodeManualImport, NodeMongoDBImport, NodePostgresImport, NodeSQLImport } from "../nodes/datasources.model";
-import { NodeTransformationCalculator, NodeTransformationDefaultValue, NodeTransformationDeleteRow, NodeTransformationFilter, NodeTransformationFilterAndReplace, NodeTransformationFormatDate, NodeTransformationGroupBy, NodeTransformationHash, NodeTransformationMerge, NodeTransformationReplace, NodeTransformations, NodeTransformationSplitter } from "../nodes/transformations.model";
+import { NodeTransformationCalculator, NodeTransformationDefaultValue, NodeTransformationDeleteRow, NodeTransformationFilter, NodeTransformationFilterAndReplace, NodeTransformationFormatDate, NodeTransformationGroupBy, NodeTransformationHash, NodeTransformationKeySelect, NodeTransformationMerge, NodeTransformationReplace, NodeTransformations, NodeTransformationSplitter } from "../nodes/transformations.model";
 import { NodeCheckDuplicate, NodeConcat, NodeJoin, NodeMap, NodePycode, NodeRequest, NodeSelect, NodeStandardMap, NodeTransformationPipeline } from "../nodes/other.model";
 import { StorageAccountImportNodeComponent } from "@app/shared/setup/nodes/datasources/azure/storage-account/storage-account.component";
 import { SqlImportNodeComponent } from "@app/shared/setup/nodes/datasources/sql-import-node/sql-import-node.component";
@@ -56,7 +56,8 @@ export const NODE_TRANSFORMERS = [
               ,NodeTransformationSplitter
               ,NodeTransformationCalculator
               ,NodeTransformationFormatDate
-              ,NodeTransformationHash
+              ,NodeTransformationHash,
+              NodeTransformationKeySelect
           ].map(cls =>{
               cls.setComponenet(cls.component)
               return cls

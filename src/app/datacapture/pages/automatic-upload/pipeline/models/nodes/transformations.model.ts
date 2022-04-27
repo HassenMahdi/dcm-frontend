@@ -1,4 +1,4 @@
-import { Filter, FilterAndReplace, Merge, Replace, DeleteRow, DefaultValue, Splitter, Calculator, FormatDate, GroupBy, Hasher } from "@app/datacapture/pages/upload/components/transformation/transformations/transformers/transformer.model";
+import { Filter, FilterAndReplace, Merge, Replace, DeleteRow, DefaultValue, Splitter, Calculator, FormatDate, GroupBy, Hasher, KeySelect } from "@app/datacapture/pages/upload/components/transformation/transformations/transformers/transformer.model";
 import { NodeCalculcatorComponent } from "@app/shared/setup/nodes/transformations/node-calculcator-component/node-calculcator-component.component";
 import { NodeDefaultComponent } from "@app/shared/setup/nodes/transformations/node-default-component/node-default-component.component";
 import { NodeDeleteRowComponent } from "@app/shared/setup/nodes/transformations/node-delete-row-component/node-delete-row-component.component";
@@ -7,6 +7,7 @@ import { NodeFilterComponent } from "@app/shared/setup/nodes/transformations/nod
 import { NodeFormatDateComponent } from "@app/shared/setup/nodes/transformations/node-format-date-component/node-format-date-component.component";
 import { NodeGroupbyComponent } from "@app/shared/setup/nodes/transformations/node-groupby-component/node-groupby-component.component";
 import { NodeHashComponent } from "@app/shared/setup/nodes/transformations/node-hash-component/node-hash-component.component";
+import { NodeKeySelectComponent } from "@app/shared/setup/nodes/transformations/node-key-select/node-key-select.component";
 import { NodeMergeComponent } from "@app/shared/setup/nodes/transformations/node-merge-component/node-merge-component.component";
 import { NodeReplaceComponent } from "@app/shared/setup/nodes/transformations/node-replace-component/node-replace-component.component";
 import { NodeSplitterComponent } from "@app/shared/setup/nodes/transformations/node-splitter-component/node-splitter-component.component";
@@ -18,7 +19,7 @@ const $ = go.GraphObject.make;
 export class NodeTransformations extends PipelineNode{
     static type = 'TRANSFORMATION'
     static category = 'TRANSFORMATION'
-    
+
     static background = 'white';
     static label = 'Generic Transformation'
     static ports = [
@@ -74,6 +75,11 @@ export class NodeTransformationHash extends NodeTransformations{
     static component = NodeHashComponent;
 }
 
+export class NodeTransformationKeySelect extends NodeTransformations{
+    static transformer = KeySelect;
+    static component = NodeKeySelectComponent;
+}
+
 for (let cls of [
     NodeTransformationFilter,
     NodeTransformationFilterAndReplace,
@@ -85,7 +91,8 @@ for (let cls of [
     NodeTransformationCalculator,
     NodeTransformationFormatDate,
     NodeTransformationGroupBy,
-    NodeTransformationHash
+    NodeTransformationHash,
+    NodeTransformationKeySelect
 ]){
     const t = new cls.transformer()
     cls.type = t.type
