@@ -1,6 +1,6 @@
 import { CONNECTOR_DEF_BLOB_STORAGE, CONNECTOR_DEF_MONGODB, CONNECTOR_DEF_POSTGRES, CONNECTOR_DEF_SQL } from "@app/datacapture/pages/connectors/models/connectors.model";
-import { BaseNodeTransformationComponent } from "@app/shared/setup/nodes/transformations/base-node-transformation/base-node-transformation.component";
 import * as go from "gojs";
+import { BaseNodeTransformationComponent } from "../../../setup/nodes/transformations/base-node-transformation/base-node-transformation.component";
 import { PipelineNode } from "../node.model";
 const $ = go.GraphObject.make;
 

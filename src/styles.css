@@ -20,6 +20,11 @@
 /* @import "ag-grid-community/dist/styles/ag-theme-fresh.css"; */
 
 
+/* Scroll bar */
+*::-webkit-scrollbar {background-color:transparent;height:0.7rem; width: 0.7rem;}
+*::-webkit-scrollbar-track {background-color:transparent}
+*::-webkit-scrollbar-thumb {background-color:#babac0;border-radius:0.7rem}
+
 .ghost.ant-tree{
     background: transparent;
 }

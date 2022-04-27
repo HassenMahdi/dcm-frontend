@@ -55,24 +55,25 @@ export class NodePycode extends PipelineNode{
     ];
 }
 
+
 export class NodeMap extends PipelineNode{
     static type = 'map'
     static category = 'TRANSFORMATION'
     static nzicon = "rotate-left"
     static color = 'darkorange';
-    static label = 'Map'
+    static label = 'Simple Mapping'
     static ports = [
         {id:"INPUT",spot: go.Spot.Left},
         {id:"OUTPUT",spot:go.Spot.Right},
     ]
 }
 
-export class NodeSelect extends PipelineNode{
-    static type = 'select'
-    static category = 'TRANSFORMATION'
-    static nzicon = "select"
+export class NodeMapToStandard extends PipelineNode{
+    static type = 'map_standard'
+    static category = 'Mapping'    
+    static nzicon = "deployment-unit"
     static color = 'darkorange';
-    static label = 'Select'
+    static label = 'Template Mapping'
     static ports = [
         {id:"INPUT",spot: go.Spot.Left},
         {id:"OUTPUT",spot:go.Spot.Right},
@@ -112,6 +113,19 @@ export class NodeCheckDuplicate extends PipelineNode{
       {id:"INPUT",spot: go.Spot.Left},
       {id:"OUTPUT",spot:go.Spot.Right},
   ]
+}
+
+
+export class NodeSelect extends PipelineNode{
+    static type = 'select'
+    static category = 'TRANSFORMATION'    
+    static nzicon = "select"
+    static color = 'darkorange';
+    static label = 'Select'
+    static ports = [
+        {id:"INPUT",spot: go.Spot.Left},
+        {id:"OUTPUT",spot:go.Spot.Right},
+    ]
 }
 
 export class NodeMatchingScore extends PipelineNode{

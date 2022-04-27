@@ -4,9 +4,9 @@ import { Observable } from 'rxjs';
 import { EditPipelineMetadataComponent } from '../componenets/modals/edit-pipeline-metadata/edit-pipeline-metadata.component';
 import { PiplineTemplateViewerComponent } from '../componenets/pipeline-editor/pipline-template-viewer/pipline-template-viewer.component';
 import { PipelineMetadata } from '../models/metadata.model';
-import { ALL_NODES } from '../models/factories/templates.factory';
 import { DcmPreviewGridComponent } from '@app/shared/dcm-preview-grid/dcm-preview-grid.component';
 import { DcmCleansingGridComponent } from '@app/shared/dcm-cleansing-grid/dcm-cleansing-grid.component';
+import { ALL_NODES } from '../models/factories/node-classes.factory';
 
 @Injectable({
   providedIn: 'root'
@@ -26,12 +26,13 @@ export class PipelineEditorService {
   editNode(node) {
     return new Observable(observer => {
       const nodeClass = this.getNodeClass(node.type);
+      const CompClass = nodeClass.getComponenent(node)
       const ref: any = this.drawer.create({
-        nzContent: nodeClass.getComponenent(node),
+        nzContent: CompClass,
         nzContentParams: {
           data: node
         },
-        nzWidth: '700px',
+        nzWidth: CompClass.width,
         nzClosable: false,
       });
 
@@ -124,5 +125,4 @@ export class PipelineEditorService {
       this.msg.info('Preview is not ready')
     }
   }
-
 }

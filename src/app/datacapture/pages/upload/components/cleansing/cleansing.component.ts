@@ -81,14 +81,16 @@ export class CleansingComponent implements OnInit, OnDestroy {
     this.fileData$      = this.store.select(selectFileData);
     this.domain$        = this.store.select(selectDomain);
     this.worksheet$     = this.store.select(selectTransformedFilePath);
+
     this.fileData$.subscribe((res) => {this.fileData = res; });
     this.targetFields$ = this.store.select(selectMappingFields);
     this.mappingId$.subscribe((res) => { this.mappingId = res; });
     this.mappingVersion$.subscribe((res) => { this.mappingVersion = res; });
-    this.domain$.subscribe((domain) => { if (domain) { this.domain = domain.id; } });
+    this.domain$.subscribe((domain) => { this.domain = (domain)? domain.id : null; });
     this.targetFields$.subscribe((targetFields) => { if (targetFields) { this.targetFields = targetFields; } });
     this.selectedSheet$.subscribe((sheet) => { this.selectedSheet = sheet; });
     this.worksheet$.subscribe((res) => { this.worksheet = res; });
+
     const isTransformed = this.worksheet !== null;
     const ws = this.worksheet ? this.worksheet : this.selectedSheet;
     // tslint:disable-next-line: max-line-length
@@ -198,7 +200,7 @@ export class CleansingComponent implements OnInit, OnDestroy {
       getRows(params) {
         combineLatest([that.lock$, that.selectedErrorLevel$.pipe(take(1))]).subscribe(([isLocked, errorLevel]) => {
           if (isLocked) {
-            const page = (params.request.endRow / that.numberOfRows) - 1;
+            const page = Number ((params.request.endRow / that.numberOfRows) - 1 );
             const isTransformed = that.worksheet !== null;
             const ws = that.worksheet ? that.worksheet : that.selectedSheet;
             const adaptedFilter = [];
@@ -217,7 +219,7 @@ export class CleansingComponent implements OnInit, OnDestroy {
             }
             that.filters$.next(GAPIFilters(params.request.filterModel));
             // tslint:disable-next-line: max-line-length
-            that.service.getJobData(that.fileData.metaData.file_id, ws, page , that.numberOfRows, adaptedFilter, adaptedSort, isTransformed, errorLevel)
+            that.service.getJobData(that.fileData.metaData.file_id, that.domain, ws, page , that.numberOfRows, adaptedFilter, adaptedSort, isTransformed, errorLevel)
             .subscribe((res: any) => {
               that.total$.next(res.total);
               const newErrors = {};
@@ -278,8 +280,10 @@ export class CleansingComponent implements OnInit, OnDestroy {
       headers.map((h, ind) => {
         if (h.colId !== INDEX_HEADER.colId) {
           const cellClass = (params) => {
+            
             const f = params.colDef.field;
             const i = (params.data) ? params.data.row_index : -1;
+            console.log({mods: this.results})
             try {
               if (this.modifications[i][f]) {
                 return 'edited-cell';
@@ -394,7 +398,7 @@ export class CleansingComponent implements OnInit, OnDestroy {
     rowNode.stub = true;
     api.redrawRows({ rowNodes: [rowNode] });
     this.runWithEditedCell().subscribe(() => {
-      this.service.getJobData(this.fileData.metaData.file_id, ws, line , 1, [], {}, isTransformed).subscribe((data: any) => {
+      this.service.getJobData(this.fileData.metaData.file_id, this.domain,ws, line , 1, [], {}, isTransformed).subscribe((data: any) => {
         // tslint:disable-next-line: variable-name
         const absolute_index = line;
         this.results[absolute_index] = data.results[absolute_index];

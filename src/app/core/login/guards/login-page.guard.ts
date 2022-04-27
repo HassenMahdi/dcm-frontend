@@ -22,6 +22,7 @@ export class LoginPageGuard implements CanActivate {
       } else {
         observer.next(true);
       }
+      // observer.next(true);
   })
   }
 }

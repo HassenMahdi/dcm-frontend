@@ -9,7 +9,7 @@ export const environment = {
   production: false,
   test: false,
   import: 'http://localhost:5001/import/v2/',
-  mapping: 'http://localhost:5003/mapping/',
+  mapping: 'http://localhost:5003/mapping',
   cleansing: 'http://localhost:5004/check',
   transform: 'http://localhost:5002/transfo/',
   admin: 'http://localhost:5000/',
