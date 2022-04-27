@@ -103,18 +103,6 @@ export class NodeRequest extends PipelineNode{
       {id:"OUTPUT",spot:go.Spot.Right},
   ]
 }
-export class NodeCheckDuplicate extends PipelineNode{
-  static type = 'duplicate'
-  static category = 'Check'
-  static nzicon = "check-circle"
-  static color = 'brown';
-  static label = 'Duplicate'
-  static ports = [
-      {id:"INPUT",spot: go.Spot.Left},
-      {id:"OUTPUT",spot:go.Spot.Right},
-  ]
-}
-
 
 export class NodeSelect extends PipelineNode{
     static type = 'select'
@@ -128,14 +116,3 @@ export class NodeSelect extends PipelineNode{
     ]
 }
 
-export class NodeMatchingScore extends PipelineNode{
-  static type = 'matching_score'
-  static category = 'Check'
-  static nzicon = "column-width"
-  static color = 'brown';
-  static label = 'Matching Score'
-  static ports = [
-      {id:"INPUT",spot: go.Spot.Left},
-      {id:"OUTPUT",spot:go.Spot.Right},
-  ]
-}

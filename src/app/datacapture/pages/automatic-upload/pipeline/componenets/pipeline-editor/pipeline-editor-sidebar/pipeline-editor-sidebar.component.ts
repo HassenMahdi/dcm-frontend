@@ -21,6 +21,7 @@ export class PipelineEditorSidebarComponent implements OnInit {
     'SCRIPTS': 'Scripts',
     'DATASINK': 'Datasink',
     'API CALL': 'API Call',
+    'CHECK': 'Check',
   };
 
   constructor() { }

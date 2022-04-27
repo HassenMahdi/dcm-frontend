@@ -36,6 +36,10 @@ import { DndModule } from 'ngx-drag-drop';
 import { EnbaleExtentionPipe } from './nodes/other/node-template-mapping/enbale-extention.pipe';
 import { DraggableShelfComponent } from './nodes/other/node-template-mapping/draggable-shelf/draggable-shelf.component';
 import { BaseCheckNodeComponent } from './nodes/checks/base-check-node/base-check-node.component';
+import { NodeRequestComponent } from './nodes/other/node-request/node-request.component';
+import { NodeCheckDuplicateComponent } from './nodes/other/node-check-duplicate/node-check-duplicate.component';
+import { NodeMatchingScoreComponent } from './nodes/transformations/node-matching-score/node-matching-score.component';
+import { NodeKeySelectComponent } from './nodes/transformations/node-key-select/node-key-select.component';
 
 
 const setupComponenets = [
@@ -67,6 +71,10 @@ const setupComponenets = [
   MongodbImportNodeComponent,
   NodeTemplateMappingComponent,
   TemplateDefinitionComponent,
+  NodeCheckDuplicateComponent,
+  NodeRequestComponent,
+  NodeMatchingScoreComponent,
+  NodeKeySelectComponent
 ]
 
 const pipes = [

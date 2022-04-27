@@ -1,6 +1,5 @@
 import * as go from "gojs";
 import { Filter, FilterAndReplace, Merge, Replace, DeleteRow, DefaultValue, Splitter, Calculator, FormatDate, GroupBy, Hasher, KeySelect } from "@app/datacapture/pages/upload/components/transformation/transformations/transformers/transformer.model";
-import { NodeKeySelectComponent } from "@app/shared/setup/nodes/transformations/node-key-select/node-key-select.component";
 import { NodeCalculcatorComponent } from "../../../setup/nodes/transformations/node-calculcator-component/node-calculcator-component.component";
 import { NodeDefaultComponent } from "../../../setup/nodes/transformations/node-default-component/node-default-component.component";
 import { NodeDeleteRowComponent } from "../../../setup/nodes/transformations/node-delete-row-component/node-delete-row-component.component";
@@ -13,6 +12,7 @@ import { NodeMergeComponent } from "../../../setup/nodes/transformations/node-me
 import { NodeReplaceComponent } from "../../../setup/nodes/transformations/node-replace-component/node-replace-component.component";
 import { NodeSplitterComponent } from "../../../setup/nodes/transformations/node-splitter-component/node-splitter-component.component";
 import { PipelineNode } from "../node.model";
+import { NodeKeySelectComponent } from "../../../setup/nodes/transformations/node-key-select/node-key-select.component";
 
 const $ = go.GraphObject.make;
 

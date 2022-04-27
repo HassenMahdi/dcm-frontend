@@ -19,12 +19,12 @@ export class NodeCheck extends PipelineNode{
 export class NodeDuplicateCheck extends NodeCheck{
     static type = "duplicate_check"
     static label = "Duplicate Check"
-    // static nzicon = ;
 }
 
 export class NodeComparionCheck extends NodeCheck{
     static type = "string_comparison"
     static label = "Format Comparison"
+    static nzicon = "check-circle"
 }
 
 export class NodeColumnComparison extends NodeCheck{
@@ -41,3 +41,10 @@ export class NodeTypeCheck extends NodeCheck{
     static type = "type_check"
     static label = "Type Check"
 }
+
+export class NodeMatchingScore extends NodeCheck{
+    static type = 'matching_score'
+    static nzicon = "column-width"
+    static label = 'Matching Score'
+  }
+  

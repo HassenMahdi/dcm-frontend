@@ -1,6 +1,3 @@
-import { NodeMatchingScoreComponent } from './../../../../../../shared/setup/nodes/transformations/node-matching-score/node-matching-score.component';
-import { NodeCheckDuplicateComponent } from './../../../../../../shared/setup/nodes/other/node-check-duplicate/node-check-duplicate.component';
-import { NodeRequestComponent } from './../../../../../../shared/setup/nodes/other/node-request/node-request.component';
 import { NodeBlobStorageUpload, NodeCollectionUpload, NodeMongoDBUpload, NodePostgresUpload, NodeSQLUpload } from "../nodes/datasink.model";
 import { NodeBlobStorage, NodeCollectionImport, NodeManualImport, NodeMongoDBImport, NodePostgresImport, NodeSQLImport } from "../nodes/datasources.model";
 import { CollectionUploadComponent } from '../../../setup/nodes/datasinks/collection-upload/collection-upload.component';
@@ -19,9 +16,12 @@ import { NodePipelineComponent } from '../../../setup/nodes/other/node-pipeline/
 import { NodePycodeComponent } from '../../../setup/nodes/other/node-pycode/node-pycode.component';
 import { NodeTemplateMappingComponent } from '../../../setup/nodes/other/node-template-mapping/node-template-mapping.component';
 import { BaseNodeTransformationComponent } from '../../../setup/nodes/transformations/base-node-transformation/base-node-transformation.component';
-import { NodeConcat, NodeJoin, NodePycode, NodeMap, NodeSelect, NodeTransformationPipeline, NodeStandardMap, NodeRequest, NodeCheckDuplicate, NodeMatchingScore } from '../nodes/other.model';
+import { NodeConcat, NodeJoin, NodePycode, NodeMap, NodeSelect, NodeTransformationPipeline, NodeStandardMap, NodeRequest, NodeMapToStandard } from '../nodes/other.model';
 import { NodeTransformationFilter, NodeTransformationFilterAndReplace, NodeTransformationMerge, NodeTransformationReplace, NodeTransformationDeleteRow, NodeTransformationDefaultValue, NodeTransformationSplitter, NodeTransformationCalculator, NodeTransformationFormatDate, NodeTransformationHash, NodeTransformationKeySelect } from '../nodes/transformations.model';
-import { NodeDuplicateCheck, NodeComparionCheck, NodeColumnComparison, NodeCodeCheck, NodeTypeCheck } from '../nodes/checks.model';
+import { NodeDuplicateCheck, NodeComparionCheck, NodeColumnComparison, NodeCodeCheck, NodeTypeCheck, NodeMatchingScore } from '../nodes/checks.model';
+import { NodeCheckDuplicateComponent } from "../../../setup/nodes/other/node-check-duplicate/node-check-duplicate.component";
+import { NodeRequestComponent } from "../../../setup/nodes/other/node-request/node-request.component";
+import { NodeMatchingScoreComponent } from "../../../setup/nodes/transformations/node-matching-score/node-matching-score.component";
 
 export const NODE_OTHERS = [
   NodeConcat.setComponenet(BaseNodeTransformationComponent),
@@ -32,12 +32,9 @@ export const NODE_OTHERS = [
   NodeTransformationPipeline.setComponenet(NodePipelineComponent),
   NodeStandardMap.setComponenet(NodePipelineComponent),
   NodeRequest.setComponenet(NodeRequestComponent),
-  NodeCheckDuplicate.setComponenet(NodeCheckDuplicateComponent),
-  NodeMatchingScore.setComponenet(NodeMatchingScoreComponent),
   NodeMapToStandard.setComponenet(NodeTemplateMappingComponent),
 ]
-  // NodeStandardMap.setComponenet(NodePipelineComponent)
-] 
+ 
 export const DATASOURCE_NODES = [
   NodeCollectionImport.setComponenet(CollectionImportComponent),
   NodeSQLImport.setComponenet(SqlImportNodeComponent),
@@ -72,7 +69,8 @@ export const NODE_TRANSFORMERS = [
 
 
 export const CHECK_NODES = [
-  NodeDuplicateCheck,
+  NodeDuplicateCheck.setComponenet(NodeCheckDuplicateComponent),
+  NodeMatchingScore.setComponenet(NodeMatchingScoreComponent),
   NodeComparionCheck,
   NodeColumnComparison,
   NodeCodeCheck,
