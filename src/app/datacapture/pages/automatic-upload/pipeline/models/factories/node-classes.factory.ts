@@ -1,9 +1,10 @@
+import { NodeMatchingScoreComponent } from './../../../../../../shared/setup/nodes/transformations/node-matching-score/node-matching-score.component';
 import { NodeCheckDuplicateComponent } from './../../../../../../shared/setup/nodes/other/node-check-duplicate/node-check-duplicate.component';
 import { NodeRequestComponent } from './../../../../../../shared/setup/nodes/other/node-request/node-request.component';
 import { NodeBlobStorageUpload, NodeCollectionUpload, NodeMongoDBUpload, NodePostgresUpload, NodeSQLUpload } from "../nodes/datasink.model";
 import { NodeBlobStorage, NodeCollectionImport, NodeManualImport, NodeMongoDBImport, NodePostgresImport, NodeSQLImport } from "../nodes/datasources.model";
 import { NodeTransformationCalculator, NodeTransformationDefaultValue, NodeTransformationDeleteRow, NodeTransformationFilter, NodeTransformationFilterAndReplace, NodeTransformationFormatDate, NodeTransformationGroupBy, NodeTransformationHash, NodeTransformationKeySelect, NodeTransformationMerge, NodeTransformationReplace, NodeTransformations, NodeTransformationSplitter } from "../nodes/transformations.model";
-import { NodeCheckDuplicate, NodeConcat, NodeJoin, NodeMap, NodePycode, NodeRequest, NodeSelect, NodeStandardMap, NodeTransformationPipeline } from "../nodes/other.model";
+import { NodeCheckDuplicate, NodeConcat, NodeJoin, NodeMap, NodeMatchingScore, NodePycode, NodeRequest, NodeSelect, NodeStandardMap, NodeTransformationPipeline } from "../nodes/other.model";
 import { StorageAccountImportNodeComponent } from "@app/shared/setup/nodes/datasources/azure/storage-account/storage-account.component";
 import { SqlImportNodeComponent } from "@app/shared/setup/nodes/datasources/sql-import-node/sql-import-node.component";
 import { NodePycodeComponent } from "@app/shared/setup/nodes/other/node-pycode/node-pycode.component";
@@ -29,7 +30,8 @@ export const NODE_OTHERS = [
   NodeTransformationPipeline.setComponenet(NodePipelineComponent),
   NodeStandardMap.setComponenet(NodePipelineComponent),
   NodeRequest.setComponenet(NodeRequestComponent),
-  NodeCheckDuplicate.setComponenet(NodeCheckDuplicateComponent)
+  NodeCheckDuplicate.setComponenet(NodeCheckDuplicateComponent),
+  NodeMatchingScore.setComponenet(NodeMatchingScoreComponent)
 ]
 export const DATASOURCE_NODES = [
   NodeCollectionImport.setComponenet(CollectionImportComponent),
@@ -47,25 +49,25 @@ export const DATASINK_NODES = [
   NodeMongoDBUpload.setComponenet(MongodbUploadNodeComponent),
 ]
 export const NODE_TRANSFORMERS = [
-              NodeTransformationFilter
-              ,NodeTransformationFilterAndReplace
-              ,NodeTransformationMerge
-              ,NodeTransformationReplace
-              ,NodeTransformationDeleteRow
-              ,NodeTransformationDefaultValue
-              ,NodeTransformationSplitter
-              ,NodeTransformationCalculator
-              ,NodeTransformationFormatDate
-              ,NodeTransformationHash,
-              NodeTransformationKeySelect
-          ].map(cls =>{
-              cls.setComponenet(cls.component)
-              return cls
-          })
+  NodeTransformationFilter
+  , NodeTransformationFilterAndReplace
+  , NodeTransformationMerge
+  , NodeTransformationReplace
+  , NodeTransformationDeleteRow
+  , NodeTransformationDefaultValue
+  , NodeTransformationSplitter
+  , NodeTransformationCalculator
+  , NodeTransformationFormatDate
+  , NodeTransformationHash,
+  NodeTransformationKeySelect
+].map(cls => {
+  cls.setComponenet(cls.component)
+  return cls
+})
 
 
-export const ALL_NODES = [...DATASOURCE_NODES,...DATASINK_NODES, ...NODE_TRANSFORMERS, ...NODE_OTHERS]
+export const ALL_NODES = [...DATASOURCE_NODES, ...DATASINK_NODES, ...NODE_TRANSFORMERS, ...NODE_OTHERS]
 
-export function getNodeClassBy(type){
-  return ALL_NODES.find(e=>e.type===type)
+export function getNodeClassBy(type) {
+  return ALL_NODES.find(e => e.type === type)
 }

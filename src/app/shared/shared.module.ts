@@ -58,6 +58,7 @@ import { NodeRequestComponent } from './setup/nodes/other/node-request/node-requ
 import { NodeCheckDuplicateComponent } from './setup/nodes/other/node-check-duplicate/node-check-duplicate.component';
 import { DcmCleansingGridComponent } from './dcm-cleansing-grid/dcm-cleansing-grid.component';
 import { NodeKeySelectComponent } from './setup/nodes/transformations/node-key-select/node-key-select.component';
+import { NodeMatchingScoreComponent } from './setup/nodes/transformations/node-matching-score/node-matching-score.component';
 // import { ZorroSharperModule } from "zorro-sharper";
 
 // In this constant, Add all the shared modules and components that you will be using in all the rest of the application
@@ -133,6 +134,7 @@ const Components = [
     NodeCheckDuplicateComponent,
     DcmCleansingGridComponent,
     NodeKeySelectComponent,
+    NodeMatchingScoreComponent,
   ],
   exports: [
     ...SharedModules,

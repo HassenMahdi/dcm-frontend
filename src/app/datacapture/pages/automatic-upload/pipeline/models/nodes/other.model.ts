@@ -113,3 +113,15 @@ export class NodeCheckDuplicate extends PipelineNode{
       {id:"OUTPUT",spot:go.Spot.Right},
   ]
 }
+
+export class NodeMatchingScore extends PipelineNode{
+  static type = 'matching_score'
+  static category = 'Check'
+  static nzicon = "column-width"
+  static color = 'brown';
+  static label = 'Matching Score'
+  static ports = [
+      {id:"INPUT",spot: go.Spot.Left},
+      {id:"OUTPUT",spot:go.Spot.Right},
+  ]
+}
