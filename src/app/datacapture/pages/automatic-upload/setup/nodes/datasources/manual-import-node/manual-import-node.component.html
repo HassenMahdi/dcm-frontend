@@ -1,7 +1,8 @@
+<p nz-typography nzEditable [(nzContent)]="data.label"></p>
 
 <nz-spin *ngIf='!imported' class="flex-box" [nzSpinning]="importing">
     <nz-upload nzType="drag" [nzAction]="url" [nzShowUploadList]="false"
-      [nzAccept]="'.csv, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel'"
+      [nzAccept]="'.csv, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel, .mdb'"
       (nzChange)="handleChange($event)">
       <p class="ant-upload-drag-icon">
         <i nz-icon nzType="inbox"></i>

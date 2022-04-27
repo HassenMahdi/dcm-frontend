@@ -22,8 +22,8 @@ export class ConnectorSQLSetupComponent extends ConnectorSetupBaseComponent{
       host: [this.data.host, [Validators.required]],
       port: [this.data.port, [Validators.required]],
       database: [this.data.database, [Validators.required]],
-      password: [this.data.password, [Validators.required]],
-      user: [this.data.user, [Validators.required]],
+      password: [this.data.password],
+      user: [this.data.user],
     });
   }
 }
