@@ -70,7 +70,7 @@ export class NodeMap extends PipelineNode{
 
 export class NodeMapToStandard extends PipelineNode{
     static type = 'map_standard'
-    static category = 'Mapping'    
+    static category = 'MAPPING'    
     static nzicon = "deployment-unit"
     static color = 'darkorange';
     static label = 'Template Mapping'

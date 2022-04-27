@@ -6,11 +6,11 @@ import { PipelineNode } from "../node.model";
 const $ = go.GraphObject.make;
 
 export class NodeCheck extends PipelineNode{
-    static type = 'CHECK'
+    static type = 'NODE_CHECK'
     static category = 'CHECK'
     static shape = 'RoundedRectangle'
-    static color = 'purple'
-    static label = 'Generic Check'
+    static color = 'brown'
+    static label = 'Base Check'
     static ports = [{id:"INPUT",spot:go.Spot.LeftCenter}, {id:"OUTPUT",spot:go.Spot.RightCenter}]
     static showLabel = true
     static component = BaseCheckNodeComponent;
@@ -19,6 +19,7 @@ export class NodeCheck extends PipelineNode{
 export class NodeDuplicateCheck extends NodeCheck{
     static type = "duplicate_check"
     static label = "Duplicate Check"
+    
 }
 
 export class NodeComparionCheck extends NodeCheck{
