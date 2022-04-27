@@ -4,7 +4,6 @@ import { Inject, Injectable, RendererFactory2 } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
 import { NzIconService } from 'ng-zorro-antd/icon';
 import { NzConfigService } from 'ng-zorro-antd/core/config';
-import { map, take, tap } from 'rxjs/operators';
 
 const SaveAsOutline = {
   name: 'saveAs-o',
@@ -31,6 +30,12 @@ export class CustomIconsService extends NzIconService{
   getIconSvgElement(type){
     var img = document.createElement('img');
     this._loadIconDynamically(type).subscribe(e=>{
+      if (!e)
+      {
+        console.warn(`IMAGE OF TYPE '${type}' NOT FOUND`)
+        return 
+      }
+
       img.innerHTML = e.icon.trim();
       const svgElm = img.firstChild as HTMLElement
       try{
